@@ -2,23 +2,28 @@ import { View, Text, StyleSheet, Linking } from "react-native";
 import { TouchableRipple } from "react-native-paper";
 import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+
 const Key = ({
   type,
   value,
-  onPress,
   style,
   color,
   backgroundColor,
   iconFamily,
+  openURL,
 }) => {
   return (
     <TouchableRipple
       activeOpacity={0.6}
-      onPress={onPress}
+      onPress={() => {
+        openURL ? Linking.openURL(openURL) : console.log(value);
+      }}
       style={[styles.buttons, { backgroundColor: backgroundColor }]} // For custom bg color to equal
       borderless
       rippleColor="#DDD"
+      delayPressIn={10}
     >
       {type === "digit" ? (
         <Text style={[styles.buttonValues, style, { color: color }]}>
@@ -49,10 +54,9 @@ const Keypad = () => {
       <Key type="digit" value={8} />
       <Key type="digit" value={9} />
       <Key
-        type="digit"
-        value="X"
-        style={{ fontWeight: "bold" }}
-        color="#3a86ff"
+        type="icon"
+        value="multiply"
+        iconFamily={<Entypo name="cross" size={30} color="#3a86ff" />}
       />
 
       <Key type="digit" value={4} />
@@ -68,33 +72,43 @@ const Keypad = () => {
       <Key
         type="icon"
         iconFamily={<Ionicons name="logo-octocat" size={30} color="#171515" />} // This specifies icon
-        onPress={() => {
-          Linking.openURL("https://psychosherlock.github.io");
-        }}
+        value="github"
+        openURL="https://psychosherlock.github.io"
       />
       <Key type="digit" value={0} />
       <Key type="digit" value="." />
-      <Key
-        type="icon"
-        value="equals"
-        color="white"
-        backgroundColor="#fb5607"
-        onPress={() => {
-          console.log("Equal");
-        }}
-      />
+      <Key type="icon" value="equals" color="white" backgroundColor="#fb5607" />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.5,
+    position: "absolute",
+    bottom: 0,
     backgroundColor: "#fff",
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
     alignContent: "space-around",
+
+    borderTopRightRadius: 30,
+    borderTopLeftRadius: 30,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+
+    elevation: 24,
+
+    borderTopWidth: 0.1,
+    borderTopColor: "#171515",
+    borderTopStartRadius: 40,
+    borderTopEndRadius: 40,
   },
   buttons: {
     width: 75,
@@ -107,7 +121,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   buttonValues: {
-    fontSize: 30,
+    fontSize: 33,
   },
 });
 export default Keypad;
