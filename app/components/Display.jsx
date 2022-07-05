@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-const Display = () => {
+const Display = ({ activate }) => {
   return (
     <View style={styles.container}>
-      <Text>Screen</Text>
+      <Text style={styles.values}>{activate && "8 + 88 + 8"}</Text>
     </View>
   );
 };
@@ -16,6 +16,14 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
-    flex: 1,
+    // backgroundColor: "tomato",
+    flex: 0.48,
+  },
+  values: {
+    position: "absolute",
+    right: 15,
+    bottom: 0,
+    fontSize: 50,
+    color: "#171515",
   },
 });

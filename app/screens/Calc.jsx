@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import { View, Text, StyleSheet, Button } from "react-native";
+import React, { useState } from "react";
 import Keypad from "../components/Keypad";
 import Display from "../components/Display";
 import SwipeUpDown from "react-native-swipe-up-down";
@@ -21,14 +21,23 @@ const ItemMini = () => (
 );
 
 export default function Calc() {
+  const [opened, setOpened] = useState(false);
   return (
     <View style={styles.container}>
-      <Display />
+      <Display activate={opened} />
       <SwipeUpDown
         itemMini={<ItemMini />} // Pass props component when collapsed
         itemFull={<Keypad />} // Pass props component when show full
         disablePressToShow={false} // Press item mini to show full
         animation="spring"
+        iconSize={15}
+        iconColor="#fb5607"
+        onShowFull={() => {
+          setOpened(true);
+        }}
+        onShowMini={() => {
+          setOpened(false);
+        }}
       />
       {/* <Keypad /> */}
     </View>
@@ -37,7 +46,7 @@ export default function Calc() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#E5E5E5",
+    backgroundColor: "#fff",
     flex: 1,
     flexDirection: "column",
   },

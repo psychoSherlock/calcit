@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Linking } from "react-native";
 import { TouchableRipple } from "react-native-paper";
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -14,11 +14,18 @@ const Key = ({
   iconFamily,
   openURL,
 }) => {
+  const [data, setdata] = useState("");
+
   return (
     <TouchableRipple
       activeOpacity={0.6}
       onPress={() => {
-        openURL ? Linking.openURL(openURL) : console.log(value);
+        if (openURL) {
+          Linking.openURL(openURL);
+        } else {
+          setdata(data + value);
+          console.log(data);
+        }
       }}
       style={[styles.buttons, { backgroundColor: backgroundColor }]} // For custom bg color to equal
       borderless
