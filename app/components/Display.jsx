@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-const Display = ({ activate }) => {
+const Display = ({ activate, data }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.values}>{activate && "8 + 88 + 8"}</Text>
+      <Text style={styles.values}>{activate && data}</Text>
     </View>
   );
 };
