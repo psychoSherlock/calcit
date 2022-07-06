@@ -4,6 +4,7 @@ import Keypad from "../components/Keypad";
 import Display from "../components/Display";
 import SwipeUpDown from "react-native-swipe-up-down";
 import { SimpleLineIcons } from "@expo/vector-icons";
+import { evaluate } from "mathjs";
 
 const ItemMini = () => (
   <View style={styles.itemMini}>
@@ -31,7 +32,8 @@ export default function Calc() {
     } else if (clicked === "backspace") {
       setdisplayvalues(displayvalues.slice(0, -1));
     } else if (clicked === "=") {
-      setdisplayvalues(eval(displayvalues));
+      converted = String(evaluate(displayvalues));
+      setdisplayvalues(converted);
     } else {
       setdisplayvalues(displayvalues + clicked);
     }
