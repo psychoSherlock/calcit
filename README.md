@@ -39,4 +39,5 @@ A simple calculator project I created to revise every basics I learnt about Reac
 - Icon for app
 - Keypad functions
 - Screen for profile
+- Fix \* to X
 - Mind Map

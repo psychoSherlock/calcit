@@ -32,7 +32,7 @@ export default function Calc() {
     } else if (clicked === "backspace") {
       setdisplayvalues(displayvalues.slice(0, -1));
     } else if (clicked === "=") {
-      converted = String(evaluate(displayvalues));
+      var converted = String(evaluate(displayvalues));
       setdisplayvalues(converted);
     } else {
       setdisplayvalues(displayvalues + clicked);
