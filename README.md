@@ -41,3 +41,4 @@ A simple calculator project I created to revise every basics I learnt about Reac
 - Screen for profile
 - Fix \* to X
 - Mind Map
+- Change blink to a text input, so much easier
