@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Linking } from "react-native";
 import { TouchableRipple } from "react-native-paper";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
